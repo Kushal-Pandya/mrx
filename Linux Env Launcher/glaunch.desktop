@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Glaunch
+Comment=GoShow Launcher
+Icon=/MRX_PYTHONPATH27
+Exec=/MRX_PYTHONPATH27/startGoshow.py
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;MrX-Apps;Internet;
+X-Desktop-File-Install-Version=0.10

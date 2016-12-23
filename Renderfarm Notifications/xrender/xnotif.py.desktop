@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/MRX_PYTHONPATH27/xnotif.py
+Hidden=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Xnotif
+Name=Xnotif
+Comment[en_US]=Render Farm Notification System Tray Icon
+Comment=Render Farm Notification System Tray Icon

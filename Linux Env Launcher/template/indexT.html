@@ -1,0 +1,197 @@
+
+<!-- HTML template for GoShow Launcher
+	Requires styleT.css
+	Using Bootstrap 3
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Glaunch</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="Bootstrap/BootstrapCSS/bootstrap.min.css"/>
+	<link rel="stylesheet" href="select2/select2.min.css"/>	
+	<link rel="stylesheet" type="text/css" href="styleT.css"/>
+
+		<!-- Using Favicon for fun - Doesnt seem to work tho -->
+	<link rel="shortcut icon" href="favicon-144.png" type="image/png"/>
+
+
+</head>
+<body class="setBackgroundColor">
+
+  <!-- Modal Alerts-->
+  <div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+	
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		  <h2 class="modal-title" id="modalHeader">Launching App...</h2>
+		  <div class="modal-body" id="modalText"><p>Some Modal Text</p></div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+
+	</div>
+  </div>
+
+  <!-- Entire launcher is kept inside container (below), inside is a panel which neatly stores all components: show/shot as heading, apps, versions licenses and tasks as body and notes as footer.
+
+  Completely resizable thanks to bootstrap
+   -->
+
+<!-- Main Container-->
+<div class="container">
+
+	<!-- First row contains heading, logo and MR. X shot images -->
+	<div class="row" >
+		<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> <font size="8" style="font-family: Papyrus, fantasy;">GoShow Web Launcher</font>
+		</div>
+		<div class="logo col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			<img class="img-responsive" viewBox="0 0 60 55" width="100px" height="100px" src="xlogo.svg">
+		</div>
+		<div class="imageX pull-right col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+			<img class="img-responsive img-rounded" id="image">
+		</div>
+	</div>
+
+
+	<div class="panel panel-default">
+
+		<div class = "setBackgroundColor">
+			<div class="panel-heading">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<!--History Drop Down Menu -->
+					<div class="dropdown" id="histDiv">
+						<button class="btn btn-block btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="histB">
+						<span id="currentHist">History</span>&#160; <span class="caret"></span></button>
+						<ul id="history" class="dropdown-menu scrollable-menu"></ul>
+					</div>
+				</div>
+				<br><br>
+				<div class="btn-group-justified setBackgroundColor" >
+					<!--Selecting Show and Shot -->
+					<div class="col-lg-6 col-md-6 col-sm-10 col-xs-10">
+						<div class="dropdown" id="showList">
+							<button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown" id="thisShow">
+							<span id="currentShow">Please select a show</span>&#160; <span class="caret"></span></button>
+							<ul id="shows" class="dropdown-menu scrollable-menu">
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-sm-10 col-xs-3">
+						<select class="shotsMenu" id="shotsMenu">
+						  	<option value="shot">Shot </option>
+						</select>
+					</div>
+				</div> 
+			</div>
+		</div>
+
+		<div class="panel-body setBackgroundColor">
+			<div class="well well-lg col-lg-6 col-md-6 col-sm-6 col-xs-6 setBackgroundColor"> 
+				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12"> 
+
+					<div class="row">
+						<!--Selecting Application -->
+						<div class="dropdown" id="appList">
+							<button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown" id="thisApp">
+							<span id="currentApp">App</span>&#160; <span class="caret"></span></button>
+							<ul id="apps" class="dropdown-menu scrollable-menu"></ul>
+						</div>
+					</div>
+
+					<div class="row">
+						<!--Selecting Version -->
+						<div class="dropdown" id="versionList">
+							<button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown" id="thisVers">
+							<span id="currentVersion">Version</span>&#160; <span class="caret"></span></button>
+							<ul id="versions" class="dropdown-menu scrollable-menu">
+							</ul>
+						</div>
+					</div>
+
+					<div class="row">
+						<!--Selecting Vray Versions -->
+						<div class="dropdown" id="vrayList">
+							<button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+							<span id="currentVray">Vray Version</span>&#160; <span class="caret"></span></button>
+							<ul id="vrays" class="dropdown-menu scrollable-menu">
+							</ul>
+						</div>
+					</div>
+
+					<!-- For the checkbox to enable logger -->
+					<div class="row ">
+						<div class="btn-block btn-primary">
+				        	<span class="input-group-addon">
+				        		<span class="loggerText">Enable Logger</span>
+						        <input id="loggerCheck" type="checkbox" aria-label="...">
+						    </span>
+					    </div>
+			      	</div>
+
+
+					<div class="row launch">				
+						<!--Button to launh application -->
+						<button type="button" class="btn btn-info btn-block btn-color" id="thisLaunch"><span id="launchB">Launch</span>&#160;</button>
+					</div>
+
+				</div>
+
+				<div class="col-lg-7 col-md-7 col-sm-10 col-xs-10 setBackgroundColor"> 
+					<!--Textarea for licenses -->
+					<div class="lics">
+						<div class="licsFrame setBackgroundColorTasks" id="licenses">
+							<label class="taskUserName" id="currentLics">Licenses:</label>
+							<span id="licList"></span>
+						</div>
+					</div>
+				</div>
+
+			</div> <!-- End of well-->
+
+			<!--Printing task list Textarea -->
+			<div class="row">				
+				<div class="tasksFrame setBackgroundColorTasks">	
+				<label class="taskUserName" id="taskUser">User</label>		
+					<div class="col-lg-12 col-md-12 col-sm-9 col-xs-10" >		
+						<span class="tasks" id="taskList">
+						</span> 
+					</div>
+				</div>
+			</div>
+
+		</div>  <!-- End of panel-body-->
+
+		<div class="panel-footer setBackgroundColor">
+			<div class="row">
+			<!--Textarea for notes -->
+				<div class="form-group notes setBackgroundColor">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 setBackgroundColor">
+						<label id="Notes">Notes:</label>
+						<textarea disabled class="form-control setBackgroundColor" rows="10" id="notes" ></textarea> 
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div> <!-- end of panel -->
+
+</div> <!-- end of container -->
+
+
+<script src="Bootstrap/BootstrapJS/jquery-2.2.3.min.js"></script>
+<script src="Bootstrap/BootstrapJS/bootstrap.min.js"></script>
+<script src="JSFiles/custom.js"></script>
+<script src="JSFiles/images.js"></script>
+<script src="select2/select2.min.js"></script>
+
+</body>
+</html>
